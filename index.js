@@ -1,11 +1,16 @@
 const express = require('express');
 const app = express();
 const routes = require('./routes/index')
+const logger = require('./config/logger');
+const morgan = require("./config/morgan")
+
+app.use(morgan.successHandler);
+app.use(morgan.errorHandler);
 
 // Define your API routes here
 app.use('/v1', routes);
 
 // Start the server
 app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+    logger.info(`Listening to port 3000`);
 });
