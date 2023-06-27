@@ -11,6 +11,6 @@ app.use(morgan.errorHandler);
 app.use('/v1', routes);
 
 // Start the server
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
     logger.info(`Listening to port 3000`);
 });
